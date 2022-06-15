@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="base.css">
+    <link rel="stylesheet" type="text/css" href="AdminPanel.css">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.1.0/build/pure-min.css" integrity="sha384-yHIFVG6ClnONEA5yB5DJXfW2/KC173DIQrYoZMEtBvGzmf0PKiGyNEqe9N6BNDBH" crossorigin="anonymous">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <meta charset="UTF-8">
+    <title>Admin Panel</title>
+</head>
+<body>
+<header class="APheader"><h3>Admin Panel</h3></header>
+<main>
+    <table class="pure-table APTable">
+        <thead>
+            <tr class="Test">
+                <th>Benutzername</th>
+                <th>Aktiviert</th>
+                <th>Rolle</th>
+                <th>Behindert</th>
+                <th>Bearbeiten</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Beispiel</td>
+                <td>
+                    <label>
+                        <input type="checkbox" disabled>
+                    </label>
+                </td>
+                <td>User_role</td>
+                <td><label>
+                    <input type="checkbox" disabled>
+                </label></td>
+                <td><button id="but_edit">Bearbeiten</button></td>
+                <script>
+                    let button = document.getElementById("but_edit")
+                    button.addEventListener("click", (e)=>{
+                        Swal.fire({
+                            title: 'ID_var',
+                            html: '<input type="text" id="uname" class="swal2-input" placeholder="Benutzername" value="">' +
+                                '<input type="checkbox" class="swal2-input" placeholder="Aktiviert" value="True">',
+                            confirmButtonText: 'Speichern',
+                            denyButtonText: 'Löschen',
+                            cancelButtonText: 'Abbrechen',
+                            showConfirmButton: true,
+                            showDenyButton: true,
+                            showCancelButton: true,
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                            focusConfirm: false,
+                            preConfirm: () => {
+                                const username = Swal.getPopup().querySelector('#uname').value
+                                if (!username) {
+                                    Swal.showValidationMessage('Bitte alle Felder ausfüllen')
+                                }
+                            },
+                        })
+                    })
+                </script>
+            </tr>
+        </tbody>
+    </table>
+</main>
+<footer></footer>
+</body>
+</html>
